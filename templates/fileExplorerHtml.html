@@ -1,0 +1,116 @@
+<div id=""></div>
+<div id="" class="container-fluid">
+	<div class="row">
+		<span class="">File Explorer</span>		
+		<div class="close" onClick="closeFileBrowser();" title="Close">x</div>
+	</div>
+	<div>
+		<div id="" class="hidden row">
+			<div id="" class=""></div>
+			<div id="">
+				<div id="" class="" title="Previous"></div>
+				<span class="">Page</span>
+				<input type="number" id="" min="1" value="1" class="">
+				<span class="">out of</span>
+				<span id="" class="">2</span>
+				<div id="" class="" title="Next"></div>
+			</div>
+			<div>
+				<input type="text" id="" placeholder="Filter...">
+			</div>	
+		</div>
+		
+		<div id="" class="row">
+			<div id="" class="">
+				<ul id="" class="list-unstyled">
+					<li id="" class=""  data-fullpath="">
+						<div class="">
+							<div class="">
+								<span class=""></span>
+							</div>
+							<span class=""></span>
+							<div class="">Pulsar Computer</div>
+						</div>
+						<div class="">
+							<ul class="list-unstyled"></ul>
+						</div>
+					</li>
+				</ul>
+				<ul id="" class="list-unstyled">
+					<li id="" class="">
+						<div class="" data-fullpath="favorite">
+							<div class="">
+								<span class="" style=""></span>
+							</div>
+							<span class=""></span>
+							<div>Favorites</div>
+						</div>
+						<div class="">
+							<ul class="list-unstyled">
+								<li class="">
+									<div class="">
+										<span class=""></span>
+										<div style="" class=""></div>
+										<div class="">
+											<ul class="list-unstyled"></ul>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div id="" class="">
+				<ul id="" class="list-unstyled">
+                  <li>
+		             <div class="" data-index="0">
+                   	  	<label>Name</label>
+		             	<span class="" data-angle="90">&gt;</span>
+		             </div>
+		             <div class="" data-index=1>
+                   	  	<label>Created Date</label>
+                   	  	<span class="" data-angle="90">&gt;</span>
+                 	 </div>
+                     <div class="" data-index=2>
+                    	<label>Modified Date</label>
+                    	<span data-angle="90">&gt;</span>
+                     </div>
+                     <div data-index=3>
+                    	<label>Size</label>
+                    	<span class="" data-angle="90">&gt;</span>
+                     </div>
+			       </li> 
+                </ul>
+                <ul class="list-unstyled" id=""></ul>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="row col-xs-8">
+				<div class="row">
+					<input type="text" id="" class="col-xs-12"/> 
+					<span id="" title="Open location"></span>
+				</div>
+				<div class="row">
+					<div>
+						<input type="text" id="" class="col-xs-4" />
+					</div>
+					<div>Password
+					&nbsp;<input type="password" id="" class="col-xs-4" />
+					</div>
+				</div>
+			</div>
+			<div class="row col-xs-4 text-right">
+				<select id="" onchange="applyFileExplorerFilter(event);">
+					<option	value="m2ts,m2t,ts,m2ps,ps,mpeg,VOB,mpg,avi,mxf,asf,wmv,dv,dvcpro,mov,mp4,avc,3gpp,3gp,3g2,3gpp2,ismv,isma,qt,aiff,flv,lxf,gxf,m2v,264,h264,dpx,m3u8,mpd,ism" title="m2ts,m2t,ts,m2ps,ps,mpeg,VOB,mpg,avi,mxf,asf,wmv,dv,dvcpro,mov,mp4,avc,3gpp,3gp,3g2,3gpp2,ismv,isma,qt,aiff,flv,lxf,gxf,m2v,264,h264,dpx,m3u8,mpd,ism" selected="selected">Media Files</option>
+					<option value="">All Files</option>
+				</select>
+				<div>
+					<input type='button' name="" id="" value='OK' class="btn btn-default" onclick="addPathToInputAndCloseFileBrowser();" /> 
+					<input type="button" value="Cancel" name="" id="" class="btn btn-default" onclick="closeFileBrowser();" />
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

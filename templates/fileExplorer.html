@@ -1,0 +1,80 @@
+<!-- Drive and data html code -->
+
+<!-- Removal drive html -->
+<li class="folderList toEnter hoverBackground classForInsertFevPath '+systemFile+'" data-fullPath="'{{ DriveLetter.trim() }}':">
+	<div class="driveName driveElementNavigation navigationSections navigationsTexts folder " title="'{{ DriveLetter.trim() }}'" >
+		<span class="window removableDisk"></span>
+		<div class="windowTextDiv ellipses">
+			{{ DriveLetter.trim() }}
+		</div>
+	</div>	
+</li>
+
+<!-- Hard disk drives html -->
+<li class="folderList toEnter hoverBackground classForInsertFevPath '+systemFile+'" data-fullPath="'{{ driveLetter.trim() }}':">
+	<div class="driveName driveElementNavigation navigationSections navigationsTexts folder " title="'{{ driveLetter.trim() }}'" >
+		<span class="window drives"></span>
+		<div class="windowTextDiv ellipses forClick">
+			{{ driveLetter.trim() }}
+		</div>
+	</div>
+</li>
+
+<!-- Network drives html -->
+<li class="folderList toEnter hoverBackground classForInsertFevPath" data-fullPath="'{{ driveLetter.trim() }}':">' +
+	<div class="driveName driveElementNavigation navigationSections navigationsTexts folder " title="'{{ driveLetter.trim() }}'" >
+		<span class="window mappedDrives"></span>
+		<div class="windowTextDiv ellipses">
+			{{ driveLetter.trim() }}
+		</div>
+	</div>
+</li>
+
+<!-- CD ROM html -->
+<li class="folderList toEnter hoverBackground classForInsertFevPath " data-fullPath="'+driveLetter.trim()+':">
+	<div class="driveName driveElementNavigation navigationSections navigationsTexts folder " title="'+driveLetter.trim()+'" >
+		<span class="window rom"></span>
+		<div class="windowTextDiv ellipses">
+			{{ driveLetter.trim() }}
+		</div>
+	</div>
+</li>
+
+<!-- Folders html -->
+<li class="bodyLi toEnter hoverBackground classForInsertFevPath' {{ systemFile }} '" data-fullPath="'{{ fullPath }} '" title="'{{ title }}'">
+	<div class="folderList headerDiv nameDiv">
+	   <div class="driveName driveElementNavigation navigationSections navigationsTexts folder   headerDiv sort" data-sortParam = "'{{ folderName }}'">
+	       <span class="window folder"></span>
+	       <div class="windowTextDiv ellipses inlineName">
+	       		{{ folderName }}
+	       </div>
+	   </div>
+	</div>
+	<div class="windowTextDiv ellipses inlineName createdDate">{{ createDate }}</div>
+	<div class="windowTextDiv ellipses inlineName updatedDate">{{ updateDate }}</div>
+	<div class="windowTextDiv ellipses inlineName size " data-size= -1 ></div>
+</li>
+
+<!-- File html -->
+<li class="bodyLi filesLi hoverBackground' {{ systemFile }}'" data-fullPath="'{{ fullPath }}'" title="'{{ title }}'" >
+	<div class="folderList headerDiv nameDiv">
+		<div class="driveName driveElementNavigation navigationSections navigationsTexts filesLi headerDiv sort" data-sortParam = "'{{ folderName }}'">
+			<span class="window '{{ file_ext }}' icon"></span>
+			<div class="windowTextDiv ellipses inlineName ">
+				{{ folderName }}
+			</div>
+		</div>
+	</div>
+	<div class="windowTextDiv ellipses inlineName createdDate ">{{ createDate }}</div>
+	<div class="windowTextDiv ellipses inlineName updatedDate">{{ updateDate }}</div>
+    <div class="windowTextDiv ellipses inlineName size " data-size='{{ size }}'>{{ ByteSize(size) }}</div>
+</li>
+
+<!-- Favorite Drives html -->
+<div class='driveName driveElementNavigation navigationSections navigationsTexts deleteFavPath'>
+	<span class='window folder'></span>
+	<div class='windowTextDiv ellipses'>{{ SavedResult }}</div>
+	<div class='child'>
+		<ul class='childUl'></ul>
+	</div>
+</div>
