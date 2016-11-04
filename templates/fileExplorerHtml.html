@@ -1,5 +1,5 @@
-<div id=""></div>
-<div id="" class="container-fluid">
+<!-- <div id=""></div>
+<div id="" class="container">
 	<div class="row">
 		<span class="">File Explorer</span>		
 		<div class="close" onClick="closeFileBrowser();" title="Close">x</div>
@@ -19,8 +19,132 @@
 				<input type="text" id="" placeholder="Filter...">
 			</div>	
 		</div>
-		
-		<div id="" class="row">
+	</div>	
+	<div id="" class="row">
+		<div id="" class="">
+			<ul id="" class="list-unstyled">
+				<li id="" class=""  data-fullpath="">
+					<div class="">
+						<div class="">
+							<span class=""></span>
+						</div>
+						<span class=""></span>
+						<div class="">Pulsar Computer</div>
+					</div>
+					<div class="">
+						<ul class="list-unstyled"></ul>
+					</div>
+				</li>
+			</ul>
+			<ul id="" class="list-unstyled">
+				<li id="" class="">
+					<div class="" data-fullpath="favorite">
+						<div class="">
+							<span class="" style=""></span>
+						</div>
+						<span class=""></span>
+						<div>Favorites</div>
+					</div>
+					<div class="">
+						<ul class="list-unstyled">
+							<li class="">
+								<div class="">
+									<span class=""></span>
+									<div style="" class=""></div>
+									<div class="">
+										<ul class="list-unstyled"></ul>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div id="" class="hidden">
+			<ul id="" class="list-unstyled">
+                 <li>
+	             <div class="" data-index="0">
+                  	  	<label>Name</label>
+	             	<span class="" data-angle="90">&gt;</span>
+	             </div>
+	             <div class="" data-index=1>
+                  	  	<label>Created Date</label>
+                  	  	<span class="" data-angle="90">&gt;</span>
+                	 </div>
+                    <div class="" data-index=2>
+                   	<label>Modified Date</label>
+                   	<span data-angle="90">&gt;</span>
+                    </div>
+                    <div data-index=3>
+                   	<label>Size</label>
+                   	<span class="" data-angle="90">&gt;</span>
+                    </div>
+		       </li> 
+               </ul>
+               <ul class="list-unstyled" id=""></ul>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-8">
+			<div class="form-group">
+				<input type="text" id="" class="col-xs-12" placeholder="Path to browse" /> 
+				<span id="" title="Open location" class="glyphicon glyphicon-ok-sign"></span>
+			</div>
+			<div class="form-inline">
+				<div class="form-group">
+					<input type="text" id="" class="col-xs-4" />
+				</div>
+				<div class="form-group">
+					<input type="password" id="" class="col-xs-4" />
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-4 text-right">
+			<select id="" onchange="applyFileExplorerFilter(event);">
+				<option	value="m2ts,m2t,ts,m2ps,ps,mpeg,VOB,mpg,avi,mxf,asf,wmv,dv,dvcpro,mov,mp4,avc,3gpp,3gp,3g2,3gpp2,ismv,isma,qt,aiff,flv,lxf,gxf,m2v,264,h264,dpx,m3u8,mpd,ism" title="m2ts,m2t,ts,m2ps,ps,mpeg,VOB,mpg,avi,mxf,asf,wmv,dv,dvcpro,mov,mp4,avc,3gpp,3gp,3g2,3gpp2,ismv,isma,qt,aiff,flv,lxf,gxf,m2v,264,h264,dpx,m3u8,mpd,ism" selected="selected">Media Files</option>
+				<option value="">All Files</option>
+			</select>
+			<div>
+				<input type='button' name="" id="" value='OK' class="btn btn-default" onclick="addPathToInputAndCloseFileBrowser();" /> 
+				<input type="button" value="Cancel" name="" id="" class="btn btn-default" onclick="closeFileBrowser();" />
+			</div>
+		</div>
+	</div>
+</div>
+ -->
+ 
+<div class="container">
+	<!-- Header -->
+	<div class="row header-height">
+		<div class="col-xs-11">
+			<span class="">File Explorer</span>
+		</div>
+		<div class="col-xs-1">
+			<div class="close" onClick="closeFileBrowser();" title="Close">x</div>
+		</div>
+	</div>
+	
+	<!-- Navigation(Breadcrumbs, pagination and filter) -->
+	<div class="row hidden navigation-height">
+		<div id="" class="col-xs-8"></div>
+		<div id="" class="col-xs-2">
+			<div id="" class="" title="Previous"></div>
+			<span class="">Page</span>
+			<input type="number" id="" min="1" value="1" class="">
+			<span class="">out of</span>
+			<span id="" class="">2</span>
+			<div id="" class="" title="Next"></div>
+		</div>
+		<div class="col-xs-2">
+			<input type="text" id="" placeholder="Filter...">
+		</div>	
+	</div>
+	
+	<!-- Main container(File explorer data) -->
+	<div class="row mainContainer-height mainContainer-color">
+		<div class="col-xs-3 main-container-left-pannel">
 			<div id="" class="">
 				<ul id="" class="list-unstyled">
 					<li id="" class=""  data-fullpath="">
@@ -61,54 +185,47 @@
 					</li>
 				</ul>
 			</div>
-			<div id="" class="">
-				<ul id="" class="list-unstyled">
-                  <li>
-		             <div class="" data-index="0">
-                   	  	<label>Name</label>
-		             	<span class="" data-angle="90">&gt;</span>
-		             </div>
-		             <div class="" data-index=1>
-                   	  	<label>Created Date</label>
-                   	  	<span class="" data-angle="90">&gt;</span>
-                 	 </div>
-                     <div class="" data-index=2>
-                    	<label>Modified Date</label>
-                    	<span data-angle="90">&gt;</span>
-                     </div>
-                     <div data-index=3>
-                    	<label>Size</label>
-                    	<span class="" data-angle="90">&gt;</span>
-                     </div>
-			       </li> 
-                </ul>
-                <ul class="list-unstyled" id=""></ul>
+		</div>
+		<div class="col-xs-9"></div>
+	</div>
+	
+	<!-- Footer -->
+	<div class="row footer-height">
+		<div class="col-xs-10">
+			<div class="form-group">
+				<div class="row">
+					<div class="col-xs-11">
+						<input type="text" id="" class="col-xs-12 form-control" placeholder="Path to browse" /> 
+					</div>
+					<div class="col-xs-1">
+						<span id="" title="Open location" class="glyphicon glyphicon-ok-sign"></span>
+					</div>
+				</div>
+			</div>
+			<div class="form-inline">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="form-group">
+							<input type="text" id="" class="form-control" placeholder="Username" />
+						</div>	
+						<div class="form-group">
+							<input type="password" id="" class="form-control" placeholder="Password" />
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-
-		<div class="row">
-			<div class="row col-xs-8">
-				<div class="row">
-					<input type="text" id="" class="col-xs-12"/> 
-					<span id="" title="Open location"></span>
+		<div class="col-xs-2 text-right">
+			<select id="" class="form-control" onchange="applyFileExplorerFilter(event);">
+				<option	value="m2ts,m2t,ts,m2ps,ps,mpeg,VOB,mpg,avi,mxf,asf,wmv,dv,dvcpro,mov,mp4,avc,3gpp,3gp,3g2,3gpp2,ismv,isma,qt,aiff,flv,lxf,gxf,m2v,264,h264,dpx,m3u8,mpd,ism" title="m2ts,m2t,ts,m2ps,ps,mpeg,VOB,mpg,avi,mxf,asf,wmv,dv,dvcpro,mov,mp4,avc,3gpp,3gp,3g2,3gpp2,ismv,isma,qt,aiff,flv,lxf,gxf,m2v,264,h264,dpx,m3u8,mpd,ism" selected="selected">Media Files</option>
+				<option value="">All Files</option>
+			</select>
+			<div class="row">
+				<div class="col-xs-6">
+					<input type='button' name="" id="" value='OK' class="btn btn-default btn-block" onclick="addPathToInputAndCloseFileBrowser();" /> 
 				</div>
-				<div class="row">
-					<div>
-						<input type="text" id="" class="col-xs-4" />
-					</div>
-					<div>Password
-					&nbsp;<input type="password" id="" class="col-xs-4" />
-					</div>
-				</div>
-			</div>
-			<div class="row col-xs-4 text-right">
-				<select id="" onchange="applyFileExplorerFilter(event);">
-					<option	value="m2ts,m2t,ts,m2ps,ps,mpeg,VOB,mpg,avi,mxf,asf,wmv,dv,dvcpro,mov,mp4,avc,3gpp,3gp,3g2,3gpp2,ismv,isma,qt,aiff,flv,lxf,gxf,m2v,264,h264,dpx,m3u8,mpd,ism" title="m2ts,m2t,ts,m2ps,ps,mpeg,VOB,mpg,avi,mxf,asf,wmv,dv,dvcpro,mov,mp4,avc,3gpp,3gp,3g2,3gpp2,ismv,isma,qt,aiff,flv,lxf,gxf,m2v,264,h264,dpx,m3u8,mpd,ism" selected="selected">Media Files</option>
-					<option value="">All Files</option>
-				</select>
-				<div>
-					<input type='button' name="" id="" value='OK' class="btn btn-default" onclick="addPathToInputAndCloseFileBrowser();" /> 
-					<input type="button" value="Cancel" name="" id="" class="btn btn-default" onclick="closeFileBrowser();" />
+				<div class="col-xs-6">
+					<input type="button" value="Cancel" name="" id="" class="btn btn-default btn-block" onclick="closeFileBrowser();" />
 				</div>
 			</div>
 		</div>

@@ -1,0 +1,30 @@
+@CHARSET "ISO-8859-1";
+
+.navigation-height{
+	height: 25px;
+}
+
+.header-height{
+	height: 25px;
+}
+
+.footer-height{
+	height: 70px;
+}
+
+.mainContainer-height{
+	height: calc(100% - 120px);
+}
+
+.mainContainer-color{
+	background-color: white;
+}
+
+.main-container-left-pannel{
+	border-right: 1px solid;
+	height: 100%;
+}
+
+.container{
+	height: 750px;
+}
