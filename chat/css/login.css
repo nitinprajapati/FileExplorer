@@ -21,7 +21,7 @@ body {
     float: none;
 }
 
-#forgot-password-link {
+.bottom-link {
 	float:right; 
 	font-size: 80%; 
 	position: relative; 
