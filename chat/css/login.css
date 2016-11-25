@@ -1,0 +1,124 @@
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(fonts/cJZKeOuBrn4kERxqtaUH3VtXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+body {
+	font-family: "Open Sans",sans-serif;
+}
+
+.tooltip {
+	font-family: "Open Sans",sans-serif !important;
+}
+
+#loginbox {
+	display: table-cell;
+    vertical-align: middle;
+    float: none;
+}
+
+#forgot-password-link {
+	float:right; 
+	font-size: 80%; 
+	position: relative; 
+	top:-10px
+}
+
+.panel-body {
+	padding-top:30px;	
+}
+
+#Status, #Password-Change-Status{
+	display:none;
+}
+
+.input-field {
+	margin-bottom: 25px;
+}
+
+.btn-container {
+	margin-top:10px;
+}
+
+#change-password-container {
+	display: none;
+}
+
+#login-link {
+	margin-top: 17px;
+	float: right;
+}
+
+.login-validation + .tooltip > .tooltip-inner {
+	width: 185px;
+	background-color: #a94442;
+	letter-spacing: 0.1px;
+}
+
+.login-validation + .tooltip > .tooltip-arrow {
+	border-right-color: #a94442;
+}
+
+#version-label {
+	letter-spacing: 0.5px;
+}
+
+#SubmitStatus{
+	position: relative;
+	top: 10%;
+	left: 35%;
+}
+
+#change{
+	position: relative;
+	top: 30%;
+	left: 35%;
+}
+
+.reset-pwd-cnt {
+	margin-top: 8em;
+}
+
+.panel.panel-info {
+	border-color: #eee;
+}
+
+#loginButton {
+	width: 230px;
+    font-size: 16px;
+}
+
+.forgot-password-container {
+	margin-top: -6px;
+}
+
+#forgot-pwd{
+	color: black;
+}
+
+#loginbox {
+	    margin-top: 8%;
+}
+
+.panel-body {
+	padding-bottom: 0px;
+}
+.loginContainer{
+    display: table;
+    height: calc(100% - 50px);
+    margin-top: 45px;	
+}
+
+.navbar-brand {
+	    padding: 25px;
+   		font-size: 34px;
+}
+
+
+.registration{
+	margin-top: 100px;
+}

@@ -1,7 +1,7 @@
 <!-- Drive and data html code -->
 
 <!-- Removal drive html -->
-<li class="folderList toEnter hoverBackground classForInsertFevPath '+systemFile+'" data-fullPath="'{{ DriveLetter.trim() }}':">
+<li class="folderList toEnter hoverBackground classForInsertFevPath ' {{ systemFile }} '" data-fullPath="'{{ DriveLetter.trim() }}':">
 	<div class="driveName driveElementNavigation navigationSections navigationsTexts folder " title="'{{ DriveLetter.trim() }}'" >
 		<span class="window removableDisk"></span>
 		<div class="windowTextDiv ellipses" data-ng-bind="{{ DriveLetter.trim() }}"></div>
