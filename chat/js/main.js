@@ -73,7 +73,7 @@ var callback	=	function (response, caller){
 		var loggedInUserName	=	$('#loggedInUserName').val().trim();
 		var message		=	$('#messageText').val();
 		//var previousMessage	=	$('div.activeChatUser').html();
-		var chatMsg	=	"<div><b>"+loggedInUserName+":</b>&nbsp;"+message+"</div>";
+		var chatMsg	=	"<div class='loggedUserMessage'><b>"+loggedInUserName+":</b>&nbsp;"+message+"</div>";
 		$('div.activeChatUser').append((chatMsg));
 		message		=	$('#messageText').val('');
 

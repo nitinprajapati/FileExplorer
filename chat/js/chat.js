@@ -57,6 +57,7 @@ var updateChatOnUI	=	function (){
 		        }
 			},
 			success: function(response){
+				
 				$('div.activeChatUser').append(response);
 			}
 		});

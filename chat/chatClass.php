@@ -74,11 +74,14 @@ if(!empty($request)){
 	 	$result	=	$obj->retrieveChat($data);
 	 	if($result){
 	 		while($row	=	$result->fetch_assoc()){
-	 			/* $message	=	array();
-	 			$message['by']		=	$this->getUser($row['message_by']);
-	 			$message['message']	=	$row['message'];
-	 			$messages[]	=	$message; */
-	 			echo "<div><b>".$obj->getUser($row['message_by']).":</b>&nbsp;".$row['message']."</div>";
+	 			if($obj->getUser($row['message_by']) == $_SESSION['username']){
+	 				$class = "loggedUserMessage";
+	 			}
+	 			else{
+	 				$class = "otherUser";
+	 			}
+	 			
+	 			echo "<div class=".$class."><b>".$obj->getUser($row['message_by']).":</b>&nbsp;".$row['message']."</div>";
 	 		}
 	 	}
 	 }

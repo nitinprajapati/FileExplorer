@@ -163,4 +163,19 @@ body {
 
 #chatTextArea{
 	overflow: auto;
+	background-color: #eee;
+	max-height: 455px;
+}
+
+.otherUser {
+	float: left;
+	color: red;
+	width: 100%
+}
+
+.loggedUserMessage {
+	float: right;
+	color: blue;
+	width: 100%;
+	text-align: right;
 }
