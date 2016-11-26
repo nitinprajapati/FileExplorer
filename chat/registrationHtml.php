@@ -1,4 +1,5 @@
-<div class="main-body registration col-md-4 col-md-offset-4">
+<div id="error"></div>
+<div class="panel panel-info registration col-md-4 col-md-offset-4">
     <div class="row">
 		<div class="form-group col-md-6">
 			<label class="control-label" for="firstName">First name</label>
@@ -18,17 +19,17 @@
     <div class="row">
 		<div class="form-group col-md-6">
 			<label class="control-label" for="firstName">Password</label>
-				<input type="text" class="form-control" id="password" placeholder="Password" />
+				<input type="password" class="form-control" id="password" placeholder="Password" />
 	     </div>
 	     <div class="form-group col-md-6">
 	     	<label class="control-label" for="lastName">Confirm password</label>
-	     		<input type="text" class="form-control" id="c_password" placeholder="Confirm password" />
+	     		<input type="password" class="form-control" id="c_password" placeholder="Confirm password" />
 	     </div>
     </div>
     <div class="form-group btn-container">
          <div class="col-sm-12 controls text-center">
           <input type="hidden" name="register" id="register" value="" />
-          <button id="registerButton" class="btn btn-success ">Register</button>
+          <button id="registerButton" class="btn btn-success">Register</button>
          </div>
          <div class="col-md-12 text-center">
          	<div class="bottom-link">

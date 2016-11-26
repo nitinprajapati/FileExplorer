@@ -8,7 +8,7 @@
  */
 
 require_once __DIR__.'./header.html';
-require_once __DIR__.'./login.html';
+require_once __DIR__.'./login.php';
 require_once __DIR__.'./footer.html';
 
 
