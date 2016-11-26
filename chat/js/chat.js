@@ -13,14 +13,23 @@
 
 $(function (){
 	
-var users	=	$('#userArray').val();
-if(users.trim() != ""){
-	var obj	=	JSON.parse(users);
-	var count	=	0;
-	for(var key in obj){
-		count = "id_"+count+1;
-		$('#users').append('<li id="'+count+'" class="list-group-item cursorPointer">'+obj[key]+"</li>")
+	var users	=	$('#userArray').val();
+	if(users.trim() != ""){
+		var obj	=	JSON.parse(users);
+		var attr	=	0;
+		for(var key in obj){
+			attr = attr+1;
+			$('#users').append('<li class="list-group-item cursorPointer userList" data-attr="attr'+attr+'">'+obj[key]+"</li>")
+			$('#chatTextArea').append('<textarea rows="20" cols="" class="form-control resizeNone displayNone textArea" disabled data-attr="attr'+attr+'">'+obj[key]+'</textarea>');
+		}
 	}
-}
 
+	$('#chatButton').bind('click', function (){
+		updateChat();
+	});
 })
+
+var updateChat	=	function (){
+	
+	sendRequest("chatClass.php", data, 3);
+}

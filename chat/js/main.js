@@ -20,13 +20,24 @@ $(function (){
 	$('#registerButton').bind('click', function (){
 		validateRegister();
 	});
+	
+	$('.userList').each(function (){
+		$(this).bind('click', function (e){ 
+			var attr = $(e.currentTarget).attr('data-attr');
+			$('.userList').removeClass('activeChatUser');
+			$('.textArea').removeClass('displayBlock').addClass('displayNone');
+			$('[data-attr = '+attr+']').removeClass('displayNone').addClass('displayBlock, activeChatUser');
+			
+		});
+	});
+
 });
 
 
-var sendRequest = function(params, caller){
+var sendRequest = function(page, params, caller){
 	$.ajax({
 		type: "POST",
-	    url: "request.php",   
+	    url: page,   
 	    data: params,
 	    async: true,
 	    statusCode: {
@@ -75,7 +86,7 @@ var validateLogin = function (){
 	data.request = 2
 	data.username = uname;
 	data.pwd = encodeURI(pwd);
-	sendRequest(data, 2);
+	sendRequest("request.php", data, 2);
 }
 
 var validateRegister	=	function (){
@@ -118,5 +129,5 @@ var validateRegister	=	function (){
 	data.lname	= lname;
 	data.email	= email;
 	data.pwd 	= encodeURI(pwd);
-	sendRequest(data, 1);
+	sendRequest("request.php", data, 1);
 }

@@ -8,7 +8,7 @@
 
 require_once __DIR__.'/dbClass.php';
 class _register{
-	public $db	=	"";
+	private $db	=	"";
 
 	public function __construct(){
 		$this->db	=	_dbConnection::conn();
@@ -22,7 +22,7 @@ class _register{
 }
 
 class _login{
-	public $db	=	"";
+	private $db	=	"";
 	
 	public function __construct(){
 		$this->db	=	_dbConnection::conn();

@@ -148,3 +148,15 @@ body {
 .cursorPointer{
 	cursor: pointer;
 }
+
+.displayNone{
+	display : none;
+}
+
+.displayBlock{
+	display: block;
+}
+
+.activeChatUser{
+	background-color: darkgrey
+}

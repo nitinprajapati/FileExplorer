@@ -28,19 +28,17 @@ while ($row	=	$result->fetch_assoc()){
 
 ?>
 <input type="hidden" id="userArray" value='<?php echo json_encode($name_arr)?>'/>
-<div style="float: left">Welcome<?php echo $_SESSION['username']; ?>,</div>
+<div style="float: left">Welcome&nbsp;<?php echo $_SESSION['username']; ?>,</div>
 <div class="logoutLink">
 	<a href="logout.php">LogOut</a>
 </div>
 <div class="panel panel-info registration col-md-8 col-md-offset-2">
     <div class="row">
 		<div class="form-group col-md-4">
-			<ul id="users" class="list-group">
-				
-			</ul>
+			<ul id="users" class="list-group"></ul>
 		</div>
-	     <div class="form-group col-md-8">
-	     	<textarea rows="20" cols="" class="form-control resizeNone"></textarea>
+	     <div class="form-group col-md-8"  id="chatTextArea">
+	     	<!-- <textarea rows="20" cols="" class="form-control resizeNone" disabled></textarea> -->
 	     </div>
 	</div>       
 	<div class="row"> 
