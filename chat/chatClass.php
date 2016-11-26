@@ -7,7 +7,7 @@
  */
 
 require_once __DIR__.'/dbClass.php';
-
+session_start();
 class _chat{
 	private $db	=	"";
 	public function __construct(){
@@ -15,13 +15,14 @@ class _chat{
 	}
 	
 	public function insrtChat($data){
-		$query	=	"Insert into chat_info set user_id =".$this->getId($_SESSION['username']).", message = '".addslashes($data['message'])."', friend_id =".$this->getId($_SESSION['friend_email'])."', chat_time = now(), messae_by =".$_SESSION['username'];
+		$query	=	"Insert into chat_info set user_id =".$this->getId($_SESSION['username']).", message = '".addslashes($data['message'])."', friend_id =".$this->getId($data['friend_id']).", chat_time = now(), message_by =".$this->getId($_SESSION['username']);
+		file_put_contents("C:\\abc.txt", $query);
 		$result	=	$this->db->query($query);
-		
+		//var_dump($query);
 		return $result;
 	}
 	
-	private function getId($user){
+	public function getId($user){
 		$username	=	"";
 		$query	=	"SELECT id FROM userinfo WHERE email ='".$user."'";
 		$result	=	$this->db->query($query);
@@ -33,7 +34,7 @@ class _chat{
 		return $username;
 	}
 	
-	private function getUser($id){
+	public function getUser($id){
 		$username	=	"";
 		$query	=	"SELECT email FROM userinfo WHERE id ='".$id."'";
 		$result	=	$this->db->query($query);
@@ -46,27 +47,40 @@ class _chat{
 	}
 	
 	public function retrieveChat($data){
-		$query	=	"SELECT message, message_by FROM chat_info WHERE user_id = ".$this->getId($_SESSION['username'])." AND friend_id =".$this->getId($data['friend_email'])." OR user_id = ".$this->getId($data['friend_email'])." AND friend_id =".$this->getId($_SESSION['username']);
+		$query	=	"SELECT message, message_by FROM chat_info WHERE user_id = ".$this->getId($_SESSION['username'])." AND friend_id =".$this->getId($data['friend_id'])." OR user_id = ".$this->getId($data['friend_id'])." AND friend_id =".$this->getId($_SESSION['username']);
 		$result	=	$this->db->query($query);
-		$messages	=	array();
-		if($result){
-			while($row	=	$result->fetch_assoc()){
-				$message	=	array();
-				$message['by']		=	$this->getUser($row['message_by']);
-				$message['message']	=	$row['message'];
-				$messages[]	=	$message;
-			}
-		}
-		return json_encode($messages);
+		//$messages	=	array();
+		
+		return $result;
 	}
 }
 extract($_POST);
 if(!empty($request)){
-	 if($request == 1){
+	$obj	=	new _chat();
+	if($request == 1){
+	 	$data	=	array('message' => $message, 'friend_id' => $friend_id);
+	 	$result	=	$obj->insrtChat($data); 
+	 	if($result){
+	 		$result = 1;
+	 	}
+	 	else{
+	 		$result	=	2;
+	 	}
 	 	
+	 	echo $result;
 	 }
 	 else{
-	 	
+	 	$data	=	array("friend_id" => $_POST['friend_id']);
+	 	$result	=	$obj->retrieveChat($data);
+	 	if($result){
+	 		while($row	=	$result->fetch_assoc()){
+	 			/* $message	=	array();
+	 			$message['by']		=	$this->getUser($row['message_by']);
+	 			$message['message']	=	$row['message'];
+	 			$messages[]	=	$message; */
+	 			echo "<div><b>".$obj->getUser($row['message_by']).":</b>&nbsp;".$row['message']."</div>";
+	 		}
+	 	}
 	 }
 }
 else{

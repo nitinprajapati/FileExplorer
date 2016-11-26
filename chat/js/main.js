@@ -23,10 +23,11 @@ $(function (){
 	
 	$('.userList').each(function (){
 		$(this).bind('click', function (e){ 
+			updateChatOnUI();
 			var attr = $(e.currentTarget).attr('data-attr');
-			$('.userList').removeClass('activeChatUser');
+			$('.activeChatUser').removeClass('activeChatUser');
 			$('.textArea').removeClass('displayBlock').addClass('displayNone');
-			$('[data-attr = '+attr+']').removeClass('displayNone').addClass('displayBlock, activeChatUser');
+			$('[data-attr = '+attr+']').removeClass('displayNone').addClass('displayBlock activeChatUser');
 			
 		});
 	});
@@ -60,7 +61,7 @@ var callback	=	function (response, caller){
 			$('#error').html('Registration faild. Please try again!!!.');
 		}
 	}
-	else{ // Login
+	else if(caller == 2){ // Login
 		if(response == 2){
 			$('#error').html('Login failed');
 		}
@@ -68,6 +69,15 @@ var callback	=	function (response, caller){
 			location.href = "chat.php";
 		}
 	} 
+	else if(caller == 3){
+		var loggedInUserName	=	$('#loggedInUserName').val().trim();
+		var message		=	$('#messageText').val();
+		//var previousMessage	=	$('div.activeChatUser').html();
+		var chatMsg	=	"<div><b>"+loggedInUserName+":</b>&nbsp;"+message+"</div>";
+		$('div.activeChatUser').append((chatMsg));
+		message		=	$('#messageText').val('');
+
+	}
 }
 
 var validateLogin = function (){

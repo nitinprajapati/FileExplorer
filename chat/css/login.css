@@ -131,7 +131,7 @@ body {
 }
 
 .resizeNone{
-	resize:none;
+	height: 470px;
 }
 
 #chatButton{
@@ -159,4 +159,8 @@ body {
 
 .activeChatUser{
 	background-color: darkgrey
+}
+
+#chatTextArea{
+	overflow: auto;
 }

@@ -23,10 +23,14 @@ $query	=	"SELECT email FROM userinfo";
 $result	=	$conn->query($query);
 $name_arr	=	array();
 while ($row	=	$result->fetch_assoc()){
-	$name_arr[]	=	$row['email'];
+	$email	=	$row['email'];
+	if($email	!= $_SESSION['username']){
+		$name_arr[]	=	$row['email'];
+	}
 } 
 
 ?>
+<input type="hidden" id="loggedInUserName" value='<?php echo $_SESSION['username']?>'/>
 <input type="hidden" id="userArray" value='<?php echo json_encode($name_arr)?>'/>
 <div style="float: left">Welcome&nbsp;<?php echo $_SESSION['username']; ?>,</div>
 <div class="logoutLink">
@@ -43,10 +47,10 @@ while ($row	=	$result->fetch_assoc()){
 	</div>       
 	<div class="row"> 
 	    <div class="form-group col-md-10">
-	        <textarea rows="" cols="" class="form-control resizeNone"></textarea>
+	        <textarea rows="" cols="" class="form-control resizeNone" id="messageText"></textarea>
 	    </div>
 	    <div class="col-md-2">
-	        <button id="chatButton" class="btn btn-primary ">Send</button>
+	        <input type="button" id="chatButton" class="btn btn-primary" value="Send">
 	    </div>
     </div>
     

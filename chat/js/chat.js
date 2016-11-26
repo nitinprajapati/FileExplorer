@@ -20,16 +20,47 @@ $(function (){
 		for(var key in obj){
 			attr = attr+1;
 			$('#users').append('<li class="list-group-item cursorPointer userList" data-attr="attr'+attr+'">'+obj[key]+"</li>")
-			$('#chatTextArea').append('<textarea rows="20" cols="" class="form-control resizeNone displayNone textArea" disabled data-attr="attr'+attr+'">'+obj[key]+'</textarea>');
+			$('#chatTextArea').append('<div class="form-control resizeNone displayNone textArea" disabled data-attr="attr'+attr+'"></div>');
 		}
 	}
 
 	$('#chatButton').bind('click', function (){
-		updateChat();
+		insertChat();
+		event.preventDefault();
 	});
-})
+});
 
-var updateChat	=	function (){
-	
+var insertChat	=	function (){
+	data	=	{};
+	var friendName	=	$('li.activeChatUser').html();
+	var message		=	$('#messageText').val();
+	data.request	=	1;
+	data.friend_id	=	friendName;
+	data.message	=	encodeURI(message);
 	sendRequest("chatClass.php", data, 3);
 }
+
+var updateChatOnUI	=	function (){
+	var data1	=	{};
+	data1.request	=	2;
+	var friendName	=	$('li.activeChatUser').html();
+	data1.friend_id	=	friendName;
+	if(friendName != "" && friendName != undefined){
+		$.ajax({
+			type: "POST",
+		    url: "chatClass.php",   
+		    data: data1,
+		    async: true,
+		    statusCode: {
+		        404: function() {
+		    		alert( "page not found" );
+		        }
+			},
+			success: function(response){
+				$('div.activeChatUser').append(response);
+			}
+		});
+	}
+   setTimeout('updateChatOnUI()', 1000);
+}
+
