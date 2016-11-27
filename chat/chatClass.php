@@ -16,9 +16,7 @@ class _chat{
 	
 	public function insrtChat($data){
 		$query	=	"Insert into chat_info set user_id =".$this->getId($_SESSION['username']).", message = '".addslashes($data['message'])."', friend_id =".$this->getId($data['friend_id']).", chat_time = now(), message_by =".$this->getId($_SESSION['username']);
-		file_put_contents("C:\\abc.txt", $query);
 		$result	=	$this->db->query($query);
-		//var_dump($query);
 		return $result;
 	}
 	
@@ -49,8 +47,6 @@ class _chat{
 	public function retrieveChat($data){
 		$query	=	"SELECT message, message_by FROM chat_info WHERE user_id = ".$this->getId($_SESSION['username'])." AND friend_id =".$this->getId($data['friend_id'])." OR user_id = ".$this->getId($data['friend_id'])." AND friend_id =".$this->getId($_SESSION['username']);
 		$result	=	$this->db->query($query);
-		//$messages	=	array();
-		
 		return $result;
 	}
 	
@@ -92,7 +88,6 @@ if(!empty($request)){
 	 			}
 	 			$string	= "<div class=".$class."><b>".$obj->getUser($row['message_by']).":</b>&nbsp;".$row['message']."</div>";
 	 			$message['text'] = $string;
-	 			//$message['totalChatCount'] = $row['COUNT(*)'];
 	 			$messages[]	=	$message;
 	 		}
 	 		$chatCount	=	$obj->isChatUpdate($data);

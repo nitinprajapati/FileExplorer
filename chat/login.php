@@ -34,7 +34,7 @@ if(!empty($_GET['param'])){
 
                     <div class="form-group btn-container">
                         <div class="col-sm-12 controls text-center">
-	                        <button type='submit' id="loginButton" class="btn btn-success ">Login</button>
+	                        <button type='submit' id="loginButton" class="btn btn-success dynamicClick">Login</button>
                         </div>
                         <div class="col-md-12 text-center forgot-password-container">
 	                       	<div class="bottom-link">

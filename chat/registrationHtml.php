@@ -29,7 +29,7 @@
     <div class="form-group btn-container">
          <div class="col-sm-12 controls text-center">
           <input type="hidden" name="register" id="register" value="" />
-          <button id="registerButton" class="btn btn-success">Register</button>
+          <button id="registerButton" class="btn btn-success dynamicClick">Register</button>
          </div>
          <div class="col-md-12 text-center">
          	<div class="bottom-link">

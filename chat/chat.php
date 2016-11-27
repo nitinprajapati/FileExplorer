@@ -49,10 +49,10 @@ while ($row	=	$result->fetch_assoc()){
 	</div>       
 	<div class="row"> 
 	    <div class="form-group col-md-10">
-	        <textarea rows="" cols="" class="form-control resizeNone" id="messageText"></textarea>
+	        <textarea rows="" cols="" class="form-control resizeNone" id="messageText" disabled></textarea>
 	    </div>
 	    <div class="col-md-2">
-	        <input type="button" id="chatButton" class="btn btn-primary" value="Send">
+	        <input type="button" id="chatButton" class="btn btn-primary dynamicClick" value="Send">
 	    </div>
     </div>
     

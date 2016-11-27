@@ -24,6 +24,7 @@ $(function (){
 	$('.userList').each(function (){
 		$(this).bind('click', function (e){ 
 			checkMessageUpdate();
+			$('#messageText').prop('disabled', false);
 			var attr = $(e.currentTarget).attr('data-attr');
 			$('.activeChatUser').removeClass('activeChatUser');
 			$('.textArea').removeClass('displayBlock').addClass('displayNone');
@@ -31,7 +32,12 @@ $(function (){
 			
 		});
 	});
-
+	
+	$('#messageText, #username, #pwd').bind('keyup', function (e){
+		if(e.keyCode == 13){
+			$('.dynamicClick').click();
+		}
+	});
 });
 
 
