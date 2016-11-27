@@ -30,6 +30,8 @@ while ($row	=	$result->fetch_assoc()){
 } 
 
 ?>
+
+<input type="hidden" id="totalChatCountOnUi" />
 <input type="hidden" id="loggedInUserName" value='<?php echo $_SESSION['username']?>'/>
 <input type="hidden" id="userArray" value='<?php echo json_encode($name_arr)?>'/>
 <div style="float: left">Welcome&nbsp;<?php echo $_SESSION['username']; ?>,</div>

@@ -53,15 +53,46 @@ var updateChatOnUI	=	function (){
 		    async: true,
 		    statusCode: {
 		        404: function() {
-		    		alert( "page not found" );
+		        	alert( "page not found" );
 		        }
 			},
 			success: function(response){
-				
-				$('div.activeChatUser').append(response);
+				response	=	JSON.parse(response);
+				var str	=	"";
+				for(var key in response){
+					if(key != "totalChatCount"){
+						str	+=	response[key].text;
+					}
+				}
+				$('div.activeChatUser').html(decodeURI(str));
+				$('#totalChatCountOnUi').val(response.totalChatCount);	
 			}
 		});
 	}
-   setTimeout('updateChatOnUI()', 1000);
 }
 
+var checkMessageUpdate	=	function (){
+	var data1	=	{};
+	var totalUiChatCount	=	$('#totalChatCountOnUi').val();
+	var friendName	=	$('li.activeChatUser').html();
+	data1.request = 3;
+	data1.friend_id	=	friendName;
+	data1.totalResultOnUi	=	totalUiChatCount ? totalUiChatCount : 0;
+	$.ajax({
+		type: "POST",
+	    url: "chatClass.php",   
+	    data: data1,
+	    async: true,
+	    statusCode: {
+	        404: function() {
+	    		alert( "page not found" );
+	        }
+		},
+		success: function(response){
+			if(response == 1){
+				updateChatOnUI();
+			}
+			setTimeout('checkMessageUpdate()', 1000);
+		}
+	});
+}

@@ -53,6 +53,14 @@ class _chat{
 		
 		return $result;
 	}
+	
+	public function isChatUpdate($data){
+		$query	=	"SELECT COUNT(*) FROM chat_info WHERE user_id = ".$this->getId($_SESSION['username'])." AND friend_id =".$this->getId($data['friend_id'])." OR user_id = ".$this->getId($data['friend_id'])." AND friend_id =".$this->getId($_SESSION['username']);
+		$result	=	$this->db->query($query);
+		$result	=	$result->fetch_assoc();
+		
+		return $result['COUNT(*)'];
+	}
 }
 extract($_POST);
 if(!empty($request)){
@@ -69,20 +77,34 @@ if(!empty($request)){
 	 	
 	 	echo $result;
 	 }
-	 else{
-	 	$data	=	array("friend_id" => $_POST['friend_id']);
+	 elseif($request == 2){
+	 	$data	=	array("friend_id" => $friend_id);
 	 	$result	=	$obj->retrieveChat($data);
+	 	$messages	=	array();
 	 	if($result){
 	 		while($row	=	$result->fetch_assoc()){
+	 			$message	=	array();
 	 			if($obj->getUser($row['message_by']) == $_SESSION['username']){
 	 				$class = "loggedUserMessage";
 	 			}
 	 			else{
 	 				$class = "otherUser";
 	 			}
-	 			
-	 			echo "<div class=".$class."><b>".$obj->getUser($row['message_by']).":</b>&nbsp;".$row['message']."</div>";
+	 			$string	= "<div class=".$class."><b>".$obj->getUser($row['message_by']).":</b>&nbsp;".$row['message']."</div>";
+	 			$message['text'] = $string;
+	 			//$message['totalChatCount'] = $row['COUNT(*)'];
+	 			$messages[]	=	$message;
 	 		}
+	 		$chatCount	=	$obj->isChatUpdate($data);
+	 		$messages['totalChatCount']	=	$chatCount;
+	 		echo json_encode($messages);
+	 	}
+	 }
+	 elseif($request == 3){
+	 	$data	=	array("friend_id" => $friend_id);
+	 	$result	=	$obj->isChatUpdate($data);
+	 	if($result != $totalResultOnUi){
+	 		echo 1;
 	 	}
 	 }
 }

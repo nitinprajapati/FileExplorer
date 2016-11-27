@@ -23,7 +23,7 @@ $(function (){
 	
 	$('.userList').each(function (){
 		$(this).bind('click', function (e){ 
-			updateChatOnUI();
+			checkMessageUpdate();
 			var attr = $(e.currentTarget).attr('data-attr');
 			$('.activeChatUser').removeClass('activeChatUser');
 			$('.textArea').removeClass('displayBlock').addClass('displayNone');

@@ -21,14 +21,17 @@ DROP TABLE IF EXISTS `chat_info`;
 
 CREATE TABLE `chat_info` (
   `chat_id` int(10) NOT NULL AUTO_INCREMENT,
-  `useri_id` int(10) NOT NULL,
+  `user_id` int(10) NOT NULL,
   `message` text,
   `friend_id` int(10) DEFAULT NULL,
   `chat_time` timestamp NULL DEFAULT NULL,
+  `message_by` int(10) DEFAULT NULL,
   PRIMARY KEY (`chat_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 /*Data for the table `chat_info` */
+
+insert  into `chat_info`(`chat_id`,`user_id`,`message`,`friend_id`,`chat_time`,`message_by`) values (1,1,'bthrjm',2,'2016-11-26 22:52:01',1),(2,2,'fdhbhfjng',1,'2016-11-26 22:55:10',2),(3,3,'abc',2,'2016-11-26 23:19:50',3),(4,3,'wfcgvet',2,'2016-11-26 23:20:45',3),(5,3,'etbhehevbyjbnyki',2,'2016-11-26 23:20:54',3),(6,3,'test',1,'2016-11-26 23:21:19',3),(7,2,'%20dhdfnn%20fk,',1,'2016-11-26 23:26:22',2),(8,2,'j%20fkglxg3w456498t708970-8690-680-980-708',1,'2016-11-26 23:27:16',2),(9,2,'s%20gshry',1,'2016-11-26 23:28:20',2),(10,2,'%20htd%20jydtk',1,'2016-11-26 23:29:35',2),(11,1,'/lkj;o;;',4,'2016-11-27 14:53:51',1),(12,2,'Hi%20test%20user',1,'2016-11-27 15:39:58',2),(13,1,'From%20test%20user%20to%20test%20user1',2,'2016-11-27 16:26:05',1),(14,1,'from%20test%20user%20to%20test%20user%201',2,'2016-11-27 16:27:50',1),(15,1,'brhrwsnjyegdh',2,'2016-11-27 16:28:29',1),(16,1,'fwregtewhy',2,'2016-11-27 16:30:41',1),(17,2,'567',1,'2016-11-27 16:30:55',2),(18,1,'yes%20%20have%20done',2,'2016-11-27 16:33:54',1),(19,1,'test4',4,'2016-11-27 16:34:07',1);
 
 /*Table structure for table `logininfo` */
 
@@ -45,7 +48,7 @@ CREATE TABLE `logininfo` (
 
 /*Data for the table `logininfo` */
 
-insert  into `logininfo`(`login_id`,`username`,`password`,`last_login`,`user_id`) values (1,'test@gmail.com','0192023a7bbd73250516f069df18b500','2016-11-26 17:56:26',1),(2,'test1@gmail.com','0192023a7bbd73250516f069df18b500','2016-11-26 16:26:16',2),(3,'test3@gmail.com','0192023a7bbd73250516f069df18b500','2016-11-26 17:29:13',3),(4,'Test4@gmail.com','0192023a7bbd73250516f069df18b500','2016-11-26 17:49:35',4);
+insert  into `logininfo`(`login_id`,`username`,`password`,`last_login`,`user_id`) values (1,'test@gmail.com','0192023a7bbd73250516f069df18b500','2016-11-27 14:53:12',1),(2,'test1@gmail.com','0192023a7bbd73250516f069df18b500','2016-11-27 15:39:42',2),(3,'test3@gmail.com','0192023a7bbd73250516f069df18b500','2016-11-26 23:20:24',3),(4,'Test4@gmail.com','0192023a7bbd73250516f069df18b500','2016-11-26 17:49:35',4);
 
 /*Table structure for table `userinfo` */
 
