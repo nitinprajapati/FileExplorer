@@ -12,11 +12,10 @@
 //================================================================================================================================================================//
 
 $(function (){
-	
+	var data	=	{};
 	var users	=	$('#userArray').val();
 	if(users.trim() != ""){
-		var obj	=	JSON.parse(users);
-		var attr	=	0;
+		var obj	=	JSON.parse(users), attr	=	0;
 		for(var key in obj){
 			attr = attr+1;
 			$('#users').append('<li class="list-group-item cursorPointer userList" data-attr="attr'+attr+'">'+obj[key]+"</li>")
@@ -30,69 +29,37 @@ $(function (){
 	});
 });
 
+/**
+ * Insert the chat messages into database
+ * */
 var insertChat	=	function (){
-	data	=	{};
-	var friendName	=	$('li.activeChatUser').html();
-	var message		=	$('#messageText').val();
+	var friendName, message;
+	data = {};
+	friendName	=	$('li.activeChatUser').html();
+	message		=	$('#messageText').val();
 	data.request	=	1;
 	data.friend_id	=	friendName;
 	data.message	=	encodeURI(message);
 	sendRequest("chatClass.php", data, 3);
 }
 
+
 var updateChatOnUI	=	function (){
-	var data1	=	{};
-	data1.request	=	2;
 	var friendName	=	$('li.activeChatUser').html();
-	data1.friend_id	=	friendName;
+	data	=	{};
+	data.request	=	2;
+	data.friend_id	=	friendName;
 	if(friendName != "" && friendName != undefined){
-		$.ajax({
-			type: "POST",
-		    url: "chatClass.php",   
-		    data: data1,
-		    async: true,
-		    statusCode: {
-		        404: function() {
-		        	alert( "page not found" );
-		        }
-			},
-			success: function(response){
-				response	=	JSON.parse(response);
-				var str	=	"";
-				for(var key in response){
-					if(key != "totalChatCount"){
-						str	+=	response[key].text;
-					}
-				}
-				$('div.activeChatUser').html(decodeURI(str));
-				$('#totalChatCountOnUi').val(response.totalChatCount);	
-			}
-		});
+		sendRequest("chatClass.php", data, 4);
 	}
 }
 
 var checkMessageUpdate	=	function (){
-	var data1	=	{};
 	var totalUiChatCount	=	$('#totalChatCountOnUi').val();
 	var friendName	=	$('li.activeChatUser').html();
-	data1.request = 3;
-	data1.friend_id	=	friendName;
-	data1.totalResultOnUi	=	totalUiChatCount ? totalUiChatCount : 0;
-	$.ajax({
-		type: "POST",
-	    url: "chatClass.php",   
-	    data: data1,
-	    async: true,
-	    statusCode: {
-	        404: function() {
-	    		alert( "page not found" );
-	        }
-		},
-		success: function(response){
-			if(response == 1){
-				updateChatOnUI();
-			}
-			setTimeout('checkMessageUpdate()', 1000);
-		}
-	});
+	data	=	{};
+	data.request = 3;
+	data.friend_id	=	friendName;
+	data.totalResultOnUi	=	totalUiChatCount ? totalUiChatCount : 0;
+	sendRequest("chatClass.php", data, 5);
 }

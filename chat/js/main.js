@@ -72,11 +72,27 @@ var callback	=	function (response, caller){
 	else if(caller == 3){
 		var loggedInUserName	=	$('#loggedInUserName').val().trim();
 		var message		=	$('#messageText').val();
-		//var previousMessage	=	$('div.activeChatUser').html();
-		var chatMsg	=	"<div class='loggedUserMessage'><b>"+loggedInUserName+":</b>&nbsp;"+message+"</div>";
+		var chatMsg		=	"<div class='loggedUserMessage'><b>"+loggedInUserName+":</b>&nbsp;"+message+"</div>";
 		$('div.activeChatUser').append((chatMsg));
 		message		=	$('#messageText').val('');
 
+	}
+	else if(caller == 4){
+		response	=	JSON.parse(response);
+		var str	=	"";
+		for(var key in response){
+			if(key != "totalChatCount"){
+				str	+=	response[key].text;
+			}
+		}
+		$('div.activeChatUser').html(decodeURI(str));
+		$('#totalChatCountOnUi').val(response.totalChatCount);	
+	}
+	else if(caller == 5){
+		if(response == 1){
+			updateChatOnUI();
+		}
+		setTimeout('checkMessageUpdate()', 1000);
 	}
 }
 
